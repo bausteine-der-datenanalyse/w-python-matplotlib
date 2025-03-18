@@ -190,11 +190,11 @@
     ]
   },
   {
-    "objectID": "skript/adapting_plots.html#farben-linien--und-markerstile",
-    "href": "skript/adapting_plots.html#farben-linien--und-markerstile",
+    "objectID": "skript/adapting_plots.html#farben-und-linienstile",
+    "href": "skript/adapting_plots.html#farben-und-linienstile",
     "title": "3  Anpassung und Gestaltung von Plots in Matplotlib",
-    "section": "3.3 3. Farben, Linien- und Markerstile",
-    "text": "3.3 3. Farben, Linien- und Markerstile\nFarben und Linienstile können angepasst werden, um wichtige Informationen hervorzuheben.\n\nplt.plot(t, np.sin(t), linestyle='-', color='r', label='sin(t)')\nplt.plot(t, np.cos(t), linestyle='--', color='g', label='cos(t)')\nplt.xlabel('Zeit (s)')\nplt.ylabel('Amplitude')\nplt.title('Anpassung von Farben und Linienstilen')\nplt.legend()\nplt.show()",
+    "section": "3.3 3. Farben und Linienstile",
+    "text": "3.3 3. Farben und Linienstile\nFarben und Linienstile helfen dabei, wichtige Informationen im Plot hervorzuheben.\n\n3.3.1 Wichtige Farben (Standardfarben in Matplotlib)\n\n\n\nFarbe\nKürzel\nBeschreibung\n\n\n\n\nBlau\n‘b’\nblue\n\n\nGrün\n‘g’\ngreen\n\n\nRot\n‘r’\nred\n\n\nCyan\n‘c’\ncyan\n\n\nMagenta\n‘m’\nmagenta\n\n\nGelb\n‘y’\nyellow\n\n\nSchwarz\n‘k’\nblack\n\n\nWeiß\n‘w’\nwhite\n\n\n\n\n\n3.3.2 Wichtige Linienstile\n\n\n\nLinienstil\nKürzel\nBeschreibung\n\n\n\n\nDurchgezogen\n‘-’\nStandardlinie\n\n\nGestrichelt\n‘–’\nlange Striche\n\n\nGepunktet\n‘:’\nnur Punkte\n\n\nStrich-Punkt\n‘-.’\nabwechselnd Strich-Punkt\n\n\n\n\nplt.plot(t, np.sin(t), linestyle='-', color='r', label='sin(t)')\nplt.plot(t, np.cos(t), linestyle='--', color='g', label='cos(t)')\nplt.xlabel('Zeit (s)')\nplt.ylabel('Amplitude')\nplt.title('Anpassung von Farben und Linienstilen')\nplt.legend()\nplt.show()",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Anpassung und Gestaltung von Plots in Matplotlib</span>"
     ]
