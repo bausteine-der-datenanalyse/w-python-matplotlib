@@ -1,96 +1,80 @@
-# Best Practices und häufige Fehler in der wissenschaftlichen Visualisierung
+# Best Practices in Matplotlib: Fehler und Verbesserungen
 
-Eine gute wissenschaftliche Visualisierung ist klar, informativ und vermeidet irreführende Darstellungen. In diesem Kapitel betrachten wir bewährte Praktiken sowie typische Fehler, die bei der Nutzung von Matplotlib auftreten können.
+In diesem Kapitel zeigen wir für häufige Problemstellungen jeweils ein schlechtes und ein verbessertes Beispiel.
 
-## 1. Best Practices für wissenschaftliche Plots
-### ✅ Klare Achsenbeschriftungen und Titel verwenden
-Ein Diagramm sollte immer gut beschriftet sein, um Missverständnisse zu vermeiden.
-
+## 1. Fehlende Beschriftungen
+### ❌ Schlechtes Beispiel
 ```{python}
 import matplotlib.pyplot as plt
 import numpy as np
 
-t = np.linspace(0, 10, 100)
-y = np.sin(t)
-
-plt.plot(t, y, label='sin(t)', color='b')
-plt.xlabel('Zeit (s)', fontsize=12)
-plt.ylabel('Amplitude', fontsize=12)
-plt.title('Gut beschriftetes Diagramm', fontsize=14)
-plt.legend()
-plt.show()
-```
-
-### ✅ Konsistente Farbgebung und Kontraste
-Farbwahl sollte sinnvoll sein und auf gute Lesbarkeit achten.
-
-```{python}
-plt.plot(t, np.sin(t), color='darkblue', linestyle='-', label='sin(t)')
-plt.plot(t, np.cos(t), color='darkred', linestyle='--', label='cos(t)')
-plt.xlabel('Zeit (s)')
-plt.ylabel('Amplitude')
-plt.title('Konsistente Farbgestaltung')
-plt.legend()
-plt.show()
-```
-
-### ✅ Richtige Skalierung und Gitterlinien nutzen
-Eine gute Skalierung verbessert die Lesbarkeit von Diagrammen.
-
-```{python}
-plt.plot(t, y, label='sin(t)', color='b')
-plt.xlabel('Zeit (s)')
-plt.ylabel('Amplitude')
-plt.xlim(0, 10)
-plt.ylim(-1.2, 1.2)
-plt.grid(True, linestyle='--', alpha=0.7)
-plt.title('Gitterlinien und Achsenskalierung')
-plt.legend()
-plt.show()
-```
-
-## 2. Häufige Fehler in wissenschaftlichen Plots
-### ❌ Irreführende Achsenskalierung
-Wenn eine y-Achse nicht bei Null beginnt, kann dies die Daten verzerren.
-
-```{python}
 x = np.linspace(0, 10, 100)
-y = x**2
+y = np.sin(x)
 
-plt.plot(x, y, color='r')
-plt.xlabel('X-Wert')
-plt.ylabel('Quadratwert')
-plt.title('❌ Falsche Skalierung (y beginnt nicht bei 0)')
-plt.ylim(50, 120)
+plt.plot(x, y)
 plt.show()
 ```
 
-### ❌ Überladene Diagramme
-Zu viele Linien oder Datenpunkte können ein Diagramm unübersichtlich machen.
+### ✅ Besseres Beispiel
+```{python}
+plt.plot(x, y, label='sin(x)', color='b')
+plt.xlabel('Zeit (s)')
+plt.ylabel('Amplitude')
+plt.title('Sinuskurve')
+plt.legend()
+plt.show()
+```
 
+## 2. Ungünstige Farbwahl
+### ❌ Schlechtes Beispiel
+```{python}
+plt.plot(x, y, color='yellow')
+plt.show()
+```
+
+### ✅ Besseres Beispiel
+```{python}
+plt.plot(x, y, color='darkblue')
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.title('Gute Kontraste für bessere Lesbarkeit')
+plt.show()
+```
+
+## 3. Keine sinnvolle Achsenskalierung
+### ❌ Schlechtes Beispiel
+```{python}
+plt.plot(x, y)
+plt.ylim(0.5, 1)
+plt.show()
+```
+
+### ✅ Besseres Beispiel
+```{python}
+plt.plot(x, y)
+plt.ylim(-1.2, 1.2)
+plt.xlim(0, 10)
+plt.grid(True)
+plt.title('Sinnvolle Achsenskalierung')
+plt.show()
+```
+
+## 4. Überladung durch zu viele Linien
+### ❌ Schlechtes Beispiel
 ```{python}
 for i in range(10):
-    plt.plot(t, np.sin(t + i * 0.1), alpha=0.5)
-plt.xlabel('Zeit (s)')
-plt.ylabel('Amplitude')
-plt.title('❌ Überladenes Diagramm mit zu vielen Linien')
+    plt.plot(x, np.sin(x + i * 0.2))
 plt.show()
 ```
 
-### ❌ Unnötige 3D-Diagramme
-Nicht jede Datenvisualisierung benötigt eine 3D-Darstellung.
-
+### ✅ Besseres Beispiel
 ```{python}
-from mpl_toolkits.mplot3d import Axes3D
-
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-X, Y = np.meshgrid(np.linspace(-5, 5, 10), np.linspace(-5, 5, 10))
-Z = np.sin(np.sqrt(X**2 + Y**2))
-ax.plot_surface(X, Y, Z, cmap='viridis')
-ax.set_title('❌ Unnötige 3D-Darstellung')
+plt.plot(x, np.sin(x), label='sin(x)')
+plt.plot(x, np.cos(x), label='cos(x)')
+plt.legend()
+plt.title('Weniger ist mehr: Reduzierte Informationsdichte')
+plt.grid(True)
 plt.show()
 ```
 
 ## Fazit
-Durch die Anwendung dieser Best Practices und das Vermeiden häufiger Fehler können wissenschaftliche Diagramme klarer und informativer gestaltet werden. Im nächsten Kapitel werden wir interaktive Visualisierungen mit Matplotlib betrachten.
+Gute Plots zeichnen sich durch klare Beschriftungen, gute Lesbarkeit und eine sinnvolle Informationsdichte aus.

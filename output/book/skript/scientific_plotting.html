@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Best Practices und häufige Fehler in der wissenschaftlichen Visualisierung – Anwendungsbaustein - Auswertung von fds-Daten</title>
+<title>5&nbsp; Best Practices in Matplotlib: Fehler und Verbesserungen – Anwendungsbaustein - Auswertung von fds-Daten</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../skript/scientific_plotting.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Best Practices und häufige Fehler in der wissenschaftlichen Visualisierung</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../skript/scientific_plotting.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Best Practices in Matplotlib: Fehler und Verbesserungen</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -176,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../skript/scientific_plotting.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Best Practices und häufige Fehler in der wissenschaftlichen Visualisierung</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Best Practices in Matplotlib: Fehler und Verbesserungen</span></span></a>
   </div>
 </li>
     </ul>
@@ -189,19 +189,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#best-practices-für-wissenschaftliche-plots" id="toc-best-practices-für-wissenschaftliche-plots" class="nav-link active" data-scroll-target="#best-practices-für-wissenschaftliche-plots"><span class="header-section-number">5.1</span> 1. Best Practices für wissenschaftliche Plots</a>
+  <li><a href="#fehlende-beschriftungen" id="toc-fehlende-beschriftungen" class="nav-link active" data-scroll-target="#fehlende-beschriftungen"><span class="header-section-number">5.1</span> 1. Fehlende Beschriftungen</a>
   <ul class="collapse">
-  <li><a href="#klare-achsenbeschriftungen-und-titel-verwenden" id="toc-klare-achsenbeschriftungen-und-titel-verwenden" class="nav-link" data-scroll-target="#klare-achsenbeschriftungen-und-titel-verwenden"><span class="header-section-number">5.1.1</span> ✅ Klare Achsenbeschriftungen und Titel verwenden</a></li>
-  <li><a href="#konsistente-farbgebung-und-kontraste" id="toc-konsistente-farbgebung-und-kontraste" class="nav-link" data-scroll-target="#konsistente-farbgebung-und-kontraste"><span class="header-section-number">5.1.2</span> ✅ Konsistente Farbgebung und Kontraste</a></li>
-  <li><a href="#richtige-skalierung-und-gitterlinien-nutzen" id="toc-richtige-skalierung-und-gitterlinien-nutzen" class="nav-link" data-scroll-target="#richtige-skalierung-und-gitterlinien-nutzen"><span class="header-section-number">5.1.3</span> ✅ Richtige Skalierung und Gitterlinien nutzen</a></li>
+  <li><a href="#schlechtes-beispiel" id="toc-schlechtes-beispiel" class="nav-link" data-scroll-target="#schlechtes-beispiel"><span class="header-section-number">5.1.1</span> ❌ Schlechtes Beispiel</a></li>
+  <li><a href="#besseres-beispiel" id="toc-besseres-beispiel" class="nav-link" data-scroll-target="#besseres-beispiel"><span class="header-section-number">5.1.2</span> ✅ Besseres Beispiel</a></li>
   </ul></li>
-  <li><a href="#häufige-fehler-in-wissenschaftlichen-plots" id="toc-häufige-fehler-in-wissenschaftlichen-plots" class="nav-link" data-scroll-target="#häufige-fehler-in-wissenschaftlichen-plots"><span class="header-section-number">5.2</span> 2. Häufige Fehler in wissenschaftlichen Plots</a>
+  <li><a href="#ungünstige-farbwahl" id="toc-ungünstige-farbwahl" class="nav-link" data-scroll-target="#ungünstige-farbwahl"><span class="header-section-number">5.2</span> 2. Ungünstige Farbwahl</a>
   <ul class="collapse">
-  <li><a href="#irreführende-achsenskalierung" id="toc-irreführende-achsenskalierung" class="nav-link" data-scroll-target="#irreführende-achsenskalierung"><span class="header-section-number">5.2.1</span> ❌ Irreführende Achsenskalierung</a></li>
-  <li><a href="#überladene-diagramme" id="toc-überladene-diagramme" class="nav-link" data-scroll-target="#überladene-diagramme"><span class="header-section-number">5.2.2</span> ❌ Überladene Diagramme</a></li>
-  <li><a href="#unnötige-3d-diagramme" id="toc-unnötige-3d-diagramme" class="nav-link" data-scroll-target="#unnötige-3d-diagramme"><span class="header-section-number">5.2.3</span> ❌ Unnötige 3D-Diagramme</a></li>
+  <li><a href="#schlechtes-beispiel-1" id="toc-schlechtes-beispiel-1" class="nav-link" data-scroll-target="#schlechtes-beispiel-1"><span class="header-section-number">5.2.1</span> ❌ Schlechtes Beispiel</a></li>
+  <li><a href="#besseres-beispiel-1" id="toc-besseres-beispiel-1" class="nav-link" data-scroll-target="#besseres-beispiel-1"><span class="header-section-number">5.2.2</span> ✅ Besseres Beispiel</a></li>
   </ul></li>
-  <li><a href="#fazit" id="toc-fazit" class="nav-link" data-scroll-target="#fazit"><span class="header-section-number">5.3</span> Fazit</a></li>
+  <li><a href="#keine-sinnvolle-achsenskalierung" id="toc-keine-sinnvolle-achsenskalierung" class="nav-link" data-scroll-target="#keine-sinnvolle-achsenskalierung"><span class="header-section-number">5.3</span> 3. Keine sinnvolle Achsenskalierung</a>
+  <ul class="collapse">
+  <li><a href="#schlechtes-beispiel-2" id="toc-schlechtes-beispiel-2" class="nav-link" data-scroll-target="#schlechtes-beispiel-2"><span class="header-section-number">5.3.1</span> ❌ Schlechtes Beispiel</a></li>
+  <li><a href="#besseres-beispiel-2" id="toc-besseres-beispiel-2" class="nav-link" data-scroll-target="#besseres-beispiel-2"><span class="header-section-number">5.3.2</span> ✅ Besseres Beispiel</a></li>
+  </ul></li>
+  <li><a href="#überladung-durch-zu-viele-linien" id="toc-überladung-durch-zu-viele-linien" class="nav-link" data-scroll-target="#überladung-durch-zu-viele-linien"><span class="header-section-number">5.4</span> 4. Überladung durch zu viele Linien</a>
+  <ul class="collapse">
+  <li><a href="#schlechtes-beispiel-3" id="toc-schlechtes-beispiel-3" class="nav-link" data-scroll-target="#schlechtes-beispiel-3"><span class="header-section-number">5.4.1</span> ❌ Schlechtes Beispiel</a></li>
+  <li><a href="#besseres-beispiel-3" id="toc-besseres-beispiel-3" class="nav-link" data-scroll-target="#besseres-beispiel-3"><span class="header-section-number">5.4.2</span> ✅ Besseres Beispiel</a></li>
+  </ul></li>
+  <li><a href="#fazit" id="toc-fazit" class="nav-link" data-scroll-target="#fazit"><span class="header-section-number">5.5</span> Fazit</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bausteine-der-datenanalyse/a-auswertung_fds_daten/blob/main/skript/scientific_plotting.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
     </div>
@@ -210,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Best Practices und häufige Fehler in der wissenschaftlichen Visualisierung</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Best Practices in Matplotlib: Fehler und Verbesserungen</span></h1>
 </div>
 
 
@@ -227,25 +235,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Eine gute wissenschaftliche Visualisierung ist klar, informativ und vermeidet irreführende Darstellungen. In diesem Kapitel betrachten wir bewährte Praktiken sowie typische Fehler, die bei der Nutzung von Matplotlib auftreten können.</p>
-<section id="best-practices-für-wissenschaftliche-plots" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="best-practices-für-wissenschaftliche-plots"><span class="header-section-number">5.1</span> 1. Best Practices für wissenschaftliche Plots</h2>
-<section id="klare-achsenbeschriftungen-und-titel-verwenden" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="klare-achsenbeschriftungen-und-titel-verwenden"><span class="header-section-number">5.1.1</span> ✅ Klare Achsenbeschriftungen und Titel verwenden</h3>
-<p>Ein Diagramm sollte immer gut beschriftet sein, um Missverständnisse zu vermeiden.</p>
-<div id="5d2651ab" class="cell" data-execution_count="1">
+<p>In diesem Kapitel zeigen wir für häufige Problemstellungen jeweils ein schlechtes und ein verbessertes Beispiel.</p>
+<section id="fehlende-beschriftungen" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="fehlende-beschriftungen"><span class="header-section-number">5.1</span> 1. Fehlende Beschriftungen</h2>
+<section id="schlechtes-beispiel" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="schlechtes-beispiel"><span class="header-section-number">5.1.1</span> ❌ Schlechtes Beispiel</h3>
+<div id="15579f8e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.sin(t)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.sin(x)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.plot(t, y, label<span class="op">=</span><span class="st">'sin(t)'</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Zeit (s)'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Amplitude'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Gut beschriftetes Diagramm'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -255,17 +258,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="konsistente-farbgebung-und-kontraste" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="konsistente-farbgebung-und-kontraste"><span class="header-section-number">5.1.2</span> ✅ Konsistente Farbgebung und Kontraste</h3>
-<p>Farbwahl sollte sinnvoll sein und auf gute Lesbarkeit achten.</p>
-<div id="c9cb2492" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.plot(t, np.sin(t), color<span class="op">=</span><span class="st">'darkblue'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, label<span class="op">=</span><span class="st">'sin(t)'</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.plot(t, np.cos(t), color<span class="op">=</span><span class="st">'darkred'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'cos(t)'</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Zeit (s)'</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Amplitude'</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Konsistente Farbgestaltung'</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="besseres-beispiel" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="besseres-beispiel"><span class="header-section-number">5.1.2</span> ✅ Besseres Beispiel</h3>
+<div id="061df94f" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y, label<span class="op">=</span><span class="st">'sin(x)'</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Zeit (s)'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Amplitude'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Sinuskurve'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -275,19 +276,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="richtige-skalierung-und-gitterlinien-nutzen" class="level3" data-number="5.1.3">
-<h3 data-number="5.1.3" class="anchored" data-anchor-id="richtige-skalierung-und-gitterlinien-nutzen"><span class="header-section-number">5.1.3</span> ✅ Richtige Skalierung und Gitterlinien nutzen</h3>
-<p>Eine gute Skalierung verbessert die Lesbarkeit von Diagrammen.</p>
-<div id="b435439d" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.plot(t, y, label<span class="op">=</span><span class="st">'sin(t)'</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Zeit (s)'</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Amplitude'</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">10</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">1.2</span>, <span class="fl">1.2</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Gitterlinien und Achsenskalierung'</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ungünstige-farbwahl" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="ungünstige-farbwahl"><span class="header-section-number">5.2</span> 2. Ungünstige Farbwahl</h2>
+<section id="schlechtes-beispiel-1" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="schlechtes-beispiel-1"><span class="header-section-number">5.2.1</span> ❌ Schlechtes Beispiel</h3>
+<div id="50f62ffd" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y, color<span class="op">=</span><span class="st">'yellow'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -297,45 +293,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-</section>
-<section id="häufige-fehler-in-wissenschaftlichen-plots" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="häufige-fehler-in-wissenschaftlichen-plots"><span class="header-section-number">5.2</span> 2. Häufige Fehler in wissenschaftlichen Plots</h2>
-<section id="irreführende-achsenskalierung" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="irreführende-achsenskalierung"><span class="header-section-number">5.2.1</span> ❌ Irreführende Achsenskalierung</h3>
-<p>Wenn eine y-Achse nicht bei Null beginnt, kann dies die Daten verzerren.</p>
-<div id="102036b8" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y, color<span class="op">=</span><span class="st">'r'</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'X-Wert'</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Quadratwert'</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'❌ Falsche Skalierung (y beginnt nicht bei 0)'</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">50</span>, <span class="dv">120</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/Users/mfehr/Documents/BCD/w-python-plotting/.venv/lib/python3.12/site-packages/IPython/core/pylabtools.py:170: UserWarning: Glyph 10060 (\N{CROSS MARK}) missing from font(s) DejaVu Sans.
-  fig.canvas.print_figure(bytes_io, **kw)</code></pre>
-</div>
+<section id="besseres-beispiel-1" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="besseres-beispiel-1"><span class="header-section-number">5.2.2</span> ✅ Besseres Beispiel</h3>
+<div id="e34c677d" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y, color<span class="op">=</span><span class="st">'darkblue'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Gute Kontraste für bessere Lesbarkeit'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="scientific_plotting_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="scientific_plotting_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="überladene-diagramme" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="überladene-diagramme"><span class="header-section-number">5.2.2</span> ❌ Überladene Diagramme</h3>
-<p>Zu viele Linien oder Datenpunkte können ein Diagramm unübersichtlich machen.</p>
-<div id="feb9cc38" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    plt.plot(t, np.sin(t <span class="op">+</span> i <span class="op">*</span> <span class="fl">0.1</span>), alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Zeit (s)'</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Amplitude'</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'❌ Überladenes Diagramm mit zu vielen Linien'</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="keine-sinnvolle-achsenskalierung" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="keine-sinnvolle-achsenskalierung"><span class="header-section-number">5.3</span> 3. Keine sinnvolle Achsenskalierung</h2>
+<section id="schlechtes-beispiel-2" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="schlechtes-beispiel-2"><span class="header-section-number">5.3.1</span> ❌ Schlechtes Beispiel</h3>
+<div id="20f65ef6" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="fl">0.5</span>, <span class="dv">1</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -345,19 +327,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="unnötige-3d-diagramme" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="unnötige-3d-diagramme"><span class="header-section-number">5.2.3</span> ❌ Unnötige 3D-Diagramme</h3>
-<p>Nicht jede Datenvisualisierung benötigt eine 3D-Darstellung.</p>
-<div id="45173f4b" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mpl_toolkits.mplot3d <span class="im">import</span> Axes3D</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>, projection<span class="op">=</span><span class="st">'3d'</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>X, Y <span class="op">=</span> np.meshgrid(np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">10</span>), np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">10</span>))</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.sin(np.sqrt(X<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> Y<span class="op">**</span><span class="dv">2</span>))</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ax.plot_surface(X, Y, Z, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'❌ Unnötige 3D-Darstellung'</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="besseres-beispiel-2" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="besseres-beispiel-2"><span class="header-section-number">5.3.2</span> ✅ Besseres Beispiel</h3>
+<div id="89d5fefa" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">1.2</span>, <span class="fl">1.2</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Sinnvolle Achsenskalierung'</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -368,9 +346,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="fazit" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="fazit"><span class="header-section-number">5.3</span> Fazit</h2>
-<p>Durch die Anwendung dieser Best Practices und das Vermeiden häufiger Fehler können wissenschaftliche Diagramme klarer und informativer gestaltet werden. Im nächsten Kapitel werden wir interaktive Visualisierungen mit Matplotlib betrachten.</p>
+<section id="überladung-durch-zu-viele-linien" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="überladung-durch-zu-viele-linien"><span class="header-section-number">5.4</span> 4. Überladung durch zu viele Linien</h2>
+<section id="schlechtes-beispiel-3" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="schlechtes-beispiel-3"><span class="header-section-number">5.4.1</span> ❌ Schlechtes Beispiel</h3>
+<div id="49fd1d9b" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    plt.plot(x, np.sin(x <span class="op">+</span> i <span class="op">*</span> <span class="fl">0.2</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="scientific_plotting_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="besseres-beispiel-3" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="besseres-beispiel-3"><span class="header-section-number">5.4.2</span> ✅ Besseres Beispiel</h3>
+<div id="2de15802" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x, np.sin(x), label<span class="op">=</span><span class="st">'sin(x)'</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x, np.cos(x), label<span class="op">=</span><span class="st">'cos(x)'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Weniger ist mehr: Reduzierte Informationsdichte'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="scientific_plotting_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="fazit" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="fazit"><span class="header-section-number">5.5</span> Fazit</h2>
+<p>Gute Plots zeichnen sich durch klare Beschriftungen, gute Lesbarkeit und eine sinnvolle Informationsdichte aus.</p>
 
 
 </section>
