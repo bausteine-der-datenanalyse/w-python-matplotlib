@@ -14,3 +14,9 @@
 # Ignore VS Code configuration
 .vscode/
 _environment
+
+# Ignore venv
+/.venv/
+
+# Ignore Jupyter cache files
+.jupyter_cache
