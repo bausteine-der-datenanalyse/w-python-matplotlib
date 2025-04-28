@@ -54,7 +54,7 @@
     "href": "skript/introduction.html",
     "title": "1  Einführung in Matplotlib",
     "section": "",
-    "text": "1.1 Warum Matplotlib?",
+    "text": "1.1 Warum Matplotlib?\nMatplotlib ist eine der bekanntesten Bibliotheken zur Datenvisualisierung in Python. Sie ermöglicht das Erstellen statischer, animierter und interaktiver Diagramme mit hoher Flexibilität.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Einführung in Matplotlib</span>"
     ]
@@ -104,7 +104,7 @@
     "href": "skript/basic_plot_types.html",
     "title": "2  Diagrammtypen in Matplotlib",
     "section": "",
-    "text": "2.1 1. Liniendiagramme (plt.plot())\nLiniendiagramme eignen sich hervorragend zur Darstellung von Trends über Zeit.\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nt = np.linspace(0, 10, 100)\ny = np.sin(t)\n\nplt.plot(t, y, label='sin(t)', color='b')\nplt.xlabel('Zeit (s)')\nplt.ylabel('Amplitude')\nplt.title('Liniendiagramm')\nplt.legend()\nplt.show()",
+    "text": "2.1 1. Liniendiagramme (plt.plot())\nMatplotlib bietet eine Vielzahl von Diagrammtypen, die für unterschiedliche Zwecke geeignet sind. In diesem Kapitel werden die wichtigsten Diagrammtypen vorgestellt und ihre Anwendungsfälle erklärt.\nLiniendiagramme eignen sich hervorragend zur Darstellung von Trends über Zeit.\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nt = np.linspace(0, 10, 100)\ny = np.sin(t)\n\nplt.plot(t, y, label='sin(t)', color='b')\nplt.xlabel('Zeit (s)')\nplt.ylabel('Amplitude')\nplt.title('Liniendiagramm')\nplt.legend()\nplt.show()",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Diagrammtypen in Matplotlib</span>"
     ]
@@ -174,7 +174,7 @@
     "href": "skript/adapting_plots.html",
     "title": "3  Anpassung und Gestaltung von Plots in Matplotlib",
     "section": "",
-    "text": "3.1 1. Achsentitel und Diagrammtitel\nKlare Achsen- und Diagrammtitel sind essenziell für die Verständlichkeit eines Plots.\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nt = np.linspace(0, 10, 100)\ny = np.sin(t)\n\nplt.plot(t, y, label='sin(t)', color='b')\nplt.xlabel('Zeit (s)', fontsize=12)\nplt.ylabel('Amplitude', fontsize=12)\nplt.title('Liniendiagramm mit Beschriftung', fontsize=14)\nplt.legend()\nplt.show()",
+    "text": "3.1 1. Achsentitel und Diagrammtitel\nEin gut gestaltetes Diagramm verbessert die Lesbarkeit und Verständlichkeit der dargestellten Daten. In diesem Kapitel werden wir verschiedene Möglichkeiten zur Anpassung und Gestaltung von Plots in Matplotlib erkunden.\nKlare Achsen- und Diagrammtitel sind essenziell für die Verständlichkeit eines Plots.\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nt = np.linspace(0, 10, 100)\ny = np.sin(t)\n\nplt.plot(t, y, label='sin(t)', color='b')\nplt.xlabel('Zeit (s)', fontsize=12)\nplt.ylabel('Amplitude', fontsize=12)\nplt.title('Liniendiagramm mit Beschriftung', fontsize=14)\nplt.legend()\nplt.show()",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Anpassung und Gestaltung von Plots in Matplotlib</span>"
     ]
@@ -234,7 +234,7 @@
     "href": "skript/advanced_techniques.html",
     "title": "4  Erweiterte Techniken in Matplotlib",
     "section": "",
-    "text": "4.1 1. Logarithmische Skalen\nLogarithmische Skalen werden oft verwendet, wenn Werte große Größenordnungen umfassen.\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nx = np.logspace(0.1, 2, 100)\ny = np.log10(x)\n\nplt.plot(x, y, label='log10(x)', color='b')\nplt.xscale('log')\nplt.xlabel('X-Wert (log-Skala)')\nplt.ylabel('Y-Wert')\nplt.title('Logarithmische Skalierung')\nplt.legend()\nplt.grid(True, which='both', linestyle='--', alpha=0.7)\nplt.show()",
+    "text": "4.1 1. Logarithmische Skalen\nIn diesem Kapitel betrachten wir einige fortgeschrittene Funktionen von Matplotlib, die für die wissenschaftliche Datenvisualisierung besonders nützlich sind.\nLogarithmische Skalen werden oft verwendet, wenn Werte große Größenordnungen umfassen.\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nx = np.logspace(0.1, 2, 100)\ny = np.log10(x)\n\nplt.plot(x, y, label='log10(x)', color='b')\nplt.xscale('log')\nplt.xlabel('X-Wert (log-Skala)')\nplt.ylabel('Y-Wert')\nplt.title('Logarithmische Skalierung')\nplt.legend()\nplt.grid(True, which='both', linestyle='--', alpha=0.7)\nplt.show()",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Erweiterte Techniken in Matplotlib</span>"
     ]
@@ -274,7 +274,7 @@
     "href": "skript/scientific_plotting.html",
     "title": "5  Best Practices in Matplotlib: Fehler und Verbesserungen",
     "section": "",
-    "text": "5.1 1. Fehlende Beschriftungen",
+    "text": "5.1 1. Fehlende Beschriftungen\nIn diesem Kapitel zeigen wir für häufige Problemstellungen jeweils ein schlechtes und ein verbessertes Beispiel.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Best Practices in Matplotlib: Fehler und Verbesserungen</span>"
     ]
