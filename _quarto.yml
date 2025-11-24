@@ -2,19 +2,20 @@ project:
   type: book
 
 book:
-  title: "Anwendungsbaustein - Auswertung von fds-Daten"
+  title: "Werkzeugbaustein Matplotlib"
   author:
     - Lukas Arnold
     - Simone Arnold
     - Florian Bagemihl
     - Matthias Baitsch
     - Marc Fehr
+    - Franca Hollmann
     - Maik Poetzsch
     - Sebastian Seipel
   date: today
   language: de-DE
   downloads: [pdf]
-  repo-url: "https://github.com/bausteine-der-datenanalyse/a-auswertung_fds_daten"
+  repo-url: "https://github.com/bausteine-der-datenanalyse/w-python-matplotlib"
   repo-actions: [source]
 
 bibliography: skript/references.bib
